@@ -33,7 +33,22 @@ namespace Back_end.Controllers
                 pais = "ARG",
                 contactar =  true
                 
-                }
+                },
+
+                new Usuario(){
+
+                id= 2,
+                nombre= "leonel",
+                apellido =  "messi",
+                correo_electronico = "messi@gmail.com",
+                fecha_nacimiento = DateTime.Parse("10/09/1990"),
+                telefono= 12345678,
+                pais = "ARG",
+                contactar =  false
+
+                },
+
+
             };
         }
 
