@@ -63,30 +63,6 @@ export class FormularioUsuarioComponent {
   
   }
 
-  obtenerErrorCampoNombre(){
-    var campo = this.form.get('nombre');
-
-    if (campo.hasError('required')){
-      return 'El campo nombre es requerido';
-    }
-
-    if (campo.hasError('minlength')){
-      return 'La longitud minima es de 3 caracteres'
-    }
-    return '';
-  }
-
-  obtenerErrorCampoApellido(){
-    var campo = this.form.get('apellido');
-
-    if (campo.hasError('required')){
-      return 'El campo apellido es requerido';
-    }
-
-    if (campo.hasError('minlength')){
-      return 'La longitud minima es de 3 caracteres'
-    }
-    return '';
-  }
-
+  
+  
 }

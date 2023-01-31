@@ -8,7 +8,7 @@
     <mat-form-field appearance = "outline">
         <mat-label>Apellido*</mat-label>
         <input formControlName = "apellido" matInput />
-        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre}}</mat-error>
+        <mat-error *ngIf="form.invalid">Ingrese un apellido valido</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance = "outline">
@@ -21,7 +21,7 @@
         <mat-label>Fecha de Nacimiento*</mat-label>
         <input formControlName = "fecha_nacimiento" matInput [matDatepicker]="picker" />
         <mat-hint>YYYY/MM/DD</mat-hint>
-        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre}}</mat-error>
+        <mat-error *ngIf="form.invalid">Ingrese una fecha valida</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -29,13 +29,13 @@
     <mat-form-field appearance = "outline">
         <mat-label>Telefono*</mat-label>
         <input formControlName = "telefono" matInput />
-        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre}}</mat-error>
+        <mat-error *ngIf="form.invalid">Ingrese un telefono valido</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance = "outline">
         <mat-label>Pais*</mat-label>
         <input formControlName = "pais" matInput />
-        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre}}</mat-error>
+        <mat-error *ngIf="form.invalid">Ingrese un pais valido</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance = "outline">
