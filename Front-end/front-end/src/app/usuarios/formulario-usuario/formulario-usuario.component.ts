@@ -26,13 +26,13 @@ export class FormularioUsuarioComponent {
   ngOnInit():void{
     this.form = this.formBuilder.group({
       nombre: ['', {
-        validators:[Validators.required, Validators.minLength(3)]
+        validators:[Validators.required, Validators.minLength(3), Validators.pattern("^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$")]
       }],
       apellido: ['', {
-        validators:[Validators.required, Validators.minLength(3)]
+        validators:[Validators.required, Validators.minLength(3), , Validators.pattern("^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$")]
       }],
       correo_electronico: ['', {
-        validators:[Validators.required, Validators.minLength(3)]
+        validators:[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]
       }],
       fecha_nacimiento: ['', {
         validators:[Validators.required, Validators.minLength(3)]

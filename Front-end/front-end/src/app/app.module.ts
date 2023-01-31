@@ -14,6 +14,7 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.co
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioUsuarioComponent } from './usuarios/formulario-usuario/formulario-usuario.component';
+import { ContactarPipe } from './pipes/contactar.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormularioUsuarioComponent } from './usuarios/formulario-usuario/formul
     ListadoGenericoComponent,
     MenuComponent,
     EditarUsuarioComponent,
-    FormularioUsuarioComponent
+    FormularioUsuarioComponent,
+    ContactarPipe
   ],
   imports: [
     BrowserModule,

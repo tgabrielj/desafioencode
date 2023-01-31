@@ -11,12 +11,11 @@ import { UsuariosService } from '../usuarios.service';
 
 export class ListadoUsuariosComponent implements OnInit{
 
-  usuarios = [{nombre: 'gabriel', apellido:'juncos'},
-  {nombre: 'leo', apellido:'messi'}];
+  usuarios = [];
 
   
 
-  columnasAMostrar = ['nombre', 'apellido'];
+  columnasAMostrar = ['Nombre', 'Apellido', 'Correo Electronico', 'Fecha de Nacimiento', 'Telefono', 'Pais de Residencia', 'Contactar' , 'Acciones'];
 
   constructor(private usuariosService: UsuariosService){
 
@@ -25,6 +24,7 @@ export class ListadoUsuariosComponent implements OnInit{
   ngOnInit(): void {
     this.usuariosService.obtenerTodos()
     .subscribe(usuarios_ => {
+      this.usuarios = usuarios_;
       console.log(usuarios_);
     }, error => console.error(error))
   }
