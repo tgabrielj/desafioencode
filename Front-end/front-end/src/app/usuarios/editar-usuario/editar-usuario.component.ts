@@ -20,7 +20,7 @@ export class EditarUsuarioComponent implements OnInit{
     apellido: "juncos",
     correo_electronico: "gabriel@gmail.com",
     fecha_nacimiento: new Date(),
-    telefono: 3513279054,
+    telefono: "3513279054",
     pais: "ARG",
     contactar: 1
   };

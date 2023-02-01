@@ -3,7 +3,7 @@ export interface usuarioCreacionDTO{
     apellido: string;
     correo_electronico: string;
     fecha_nacimiento: Date;
-    telefono: number;
+    telefono: string;
     pais: string;
     contactar: number;
 }
@@ -14,7 +14,7 @@ export interface usuarioDTO{
     apellido: string;
     correo_electronico: string;
     fecha_nacimiento: Date;
-    telefono: number;
+    telefono: string;
     pais: string;
     contactar: number;
 }

@@ -15,7 +15,7 @@ namespace Back_end.Entidades
         public string apellido { get; set; }
         public string correo_electronico { get; set; }
         public DateTime fecha_nacimiento { get; set; }
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         public string pais { get; set; }
         public bool contactar { get; set; }
 

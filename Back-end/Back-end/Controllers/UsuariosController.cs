@@ -1,6 +1,7 @@
 ﻿using Back_end.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,44 +13,20 @@ namespace Back_end.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
+        private readonly ApplicationDbContext context;
         
 
-        public UsuariosController() {
+        public UsuariosController(
+            ApplicationDbContext context) {
             //this.repositorio = repositorio;
+            this.context = context;
         }
 
         [HttpGet] //api/usuarios
-        public ActionResult<List<Usuario>> Get() {
-            //return repositorio.ObtenerTodosLosUsuarios();
-            return new List<Usuario>() { 
-                new Usuario(){
+        public async Task<ActionResult<List<Usuario>>> Get() {
 
-                id= 1,
-                nombre= "gabrielllllllllll",
-                apellido =  "juncos",
-                correo_electronico = "gabriel@gmail.com",
-                fecha_nacimiento = DateTime.Parse("20/12/1994"),
-                telefono= 4620321,
-                pais = "ARG",
-                contactar =  true
-                
-                },
-
-                new Usuario(){
-
-                id= 2,
-                nombre= "leonel",
-                apellido =  "messi",
-                correo_electronico = "messi@gmail.com",
-                fecha_nacimiento = DateTime.Parse("10/09/1990"),
-                telefono= 12345678,
-                pais = "ARG",
-                contactar =  false
-
-                },
-
-
-            };
+            return await context.Usuarios.ToListAsync();
+            
         }
 
         // un endpoint para obtener usuario por id
@@ -61,9 +38,12 @@ namespace Back_end.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Usuario usuario) {
+        public async Task<ActionResult> Post([FromBody] Usuario usuario) {
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            context.Add(usuario);
+            await context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpPut]
