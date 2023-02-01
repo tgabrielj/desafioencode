@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import { usuarioCreacionDTO } from '../usuario';
+import { UsuariosService } from '../usuarios.service';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -9,13 +10,15 @@ import { usuarioCreacionDTO } from '../usuario';
 })
 export class CrearUsuarioComponent{
 
-  constructor(private router: Router){
+  constructor(private router: Router, private usuariosService: UsuariosService){
   }
 // se recibie del formulario-usuario el usuario que se intenta crear
   guardarCambios(usuario: usuarioCreacionDTO){
     //guardar los cambios
-    console.log(usuario);
-    this.router.navigate(['/usuarios'])
+    this.usuariosService.crear(usuario).subscribe(()=>{
+      
+    this.router.navigate(['/usuarios']);
+    }, error => console.error(error));
   }
 
 }

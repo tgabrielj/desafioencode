@@ -21,7 +21,7 @@ export class FormularioUsuarioComponent {
   modelo: usuarioCreacionDTO;
 
   @Output()
-  submit : EventEmitter<usuarioCreacionDTO> = new EventEmitter<usuarioCreacionDTO>();
+  onSubmit : EventEmitter<usuarioCreacionDTO> = new EventEmitter<usuarioCreacionDTO>();
 
   ngOnInit():void{
     this.form = this.formBuilder.group({
@@ -60,7 +60,7 @@ export class FormularioUsuarioComponent {
 
   guardarCambios(){
     //form value se accede a la info del formulario
-    this.submit.emit(this.form.value)
+    this.onSubmit.emit(this.form.value)
   
   }
 

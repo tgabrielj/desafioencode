@@ -22,7 +22,7 @@ export class EditarUsuarioComponent implements OnInit{
     fecha_nacimiento: new Date(),
     telefono: "3513279054",
     pais: "ARG",
-    contactar: 1
+    contactar: true
   };
 
   ngOnInit(): void {

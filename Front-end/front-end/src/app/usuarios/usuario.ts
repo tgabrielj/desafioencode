@@ -5,7 +5,7 @@ export interface usuarioCreacionDTO{
     fecha_nacimiento: Date;
     telefono: string;
     pais: string;
-    contactar: number;
+    contactar: boolean;
 }
 
 export interface usuarioDTO{
@@ -16,5 +16,5 @@ export interface usuarioDTO{
     fecha_nacimiento: Date;
     telefono: string;
     pais: string;
-    contactar: number;
+    contactar: boolean;
 }
