@@ -28,7 +28,7 @@ namespace Back_end
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("cadena")));
+            options.UseSqlServer(Configuration.GetConnectionString("dafaultConnection")));
 
             services.AddCors(options => {
                 options.AddDefaultPolicy(builder =>
