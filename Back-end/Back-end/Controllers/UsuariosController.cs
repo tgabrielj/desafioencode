@@ -1,4 +1,6 @@
-﻿using Back_end.Entidades;
+﻿using AutoMapper;
+using Back_end.DTOs;
+using Back_end.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -14,42 +16,59 @@ namespace Back_end.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly ApplicationDbContext context;
-        
+        private readonly IMapper mapper;
 
         public UsuariosController(
-            ApplicationDbContext context) {
+            ApplicationDbContext context,
+            IMapper mapper) {
             //this.repositorio = repositorio;
             this.context = context;
+            this.mapper = mapper;
         }
 
         [HttpGet] //api/usuarios
-        public async Task<ActionResult<List<Usuario>>> Get() {
+        public async Task<ActionResult<List<UsuarioDTO>>> Get() {
 
-            return await context.Usuarios.ToListAsync();
-            
+            var usuarios =  await context.Usuarios.ToListAsync();
+            return mapper.Map<List<UsuarioDTO>>(usuarios);
         }
 
         // un endpoint para obtener usuario por id
         [HttpGet("{id:int}")] // api/usuarios/1/gabriel
-        public async Task<ActionResult<Usuario>> Get(int id) {
+        public async Task<ActionResult<UsuarioDTO>> Get(int id) {
             // el BinRequired obliga a que los parametros sean obligatorios
 
-            throw new NotImplementedException();
+            var usuario = await context.Usuarios.FirstOrDefaultAsync(x => x.id ==id);
+            if (usuario == null) {
+                return NotFound();
+            }
+
+            return mapper.Map<UsuarioDTO>(usuario);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Usuario usuario) {
+        public async Task<ActionResult> Post([FromBody] UsuarioCreacionDTO usuarioCreacionDTO) {
 
             //throw new NotImplementedException();
+            var usuario = mapper.Map<Usuario>(usuarioCreacionDTO);
             context.Add(usuario);
             await context.SaveChangesAsync();
             return NoContent();
         }
 
-        [HttpPut]
-        public ActionResult Put([FromBody] Usuario usuario)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put( int id, [FromBody] UsuarioCreacionDTO usuarioCreacionDTO)
         {
-            throw new NotImplementedException();
+            var usuario = await context.Usuarios.FirstOrDefaultAsync(x => x.id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            usuario = mapper.Map(usuarioCreacionDTO, usuario);
+            await context.SaveChangesAsync();
+            return NoContent();
+
 
         }
 

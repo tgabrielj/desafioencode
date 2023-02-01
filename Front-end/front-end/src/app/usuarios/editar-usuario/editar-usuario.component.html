@@ -1,5 +1,7 @@
 <h2>Editar usuario</h2>
 
-<app-formulario-usuario 
+<app-formulario-usuario  *ngIf="modelo"
 [modelo] = 'modelo'
 (onSubmit)="guardarCambios($event)"></app-formulario-usuario>
+
+<mat-spinner *ngIf = "!modelo" ></mat-spinner>

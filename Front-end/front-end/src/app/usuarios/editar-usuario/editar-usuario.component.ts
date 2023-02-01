@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { usuarioDTO } from '../usuario';
 import {Router} from '@angular/router';
+import { UsuariosService } from '../usuarios.service';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -9,30 +10,32 @@ import {Router} from '@angular/router';
   styleUrls: ['./editar-usuario.component.css']
 })
 export class EditarUsuarioComponent implements OnInit{
-  constructor(private router: Router){
+  constructor(private router: Router,
+              private usuarioService: UsuariosService,
+              private activatedRoute: ActivatedRoute){
 
   }
 
   //viene por bd
-  modelo: usuarioDTO = {
-    id:1,
-    nombre: "gabriel",
-    apellido: "juncos",
-    correo_electronico: "gabriel@gmail.com",
-    fecha_nacimiento: new Date(),
-    telefono: "3513279054",
-    pais: "ARG",
-    contactar: true
-  };
+  modelo : usuarioDTO;;
 
   ngOnInit(): void {
-  
+    this.activatedRoute.params.subscribe((params) => {
+      this.usuarioService.obtenerPorId(params.id)
+      .subscribe(usuario => {
+        this.modelo= usuario;// en caso de no encontrar al usuario con ese id redirige al listado de usuarios
+      },() => this.router.navigate(['/usuarios']))
+    })
+    
   }
 
   // se recibie del formulario-usuario el usuario que se intenta crear
   guardarCambios(usuario: usuarioDTO){
-    //guardar los cambios
-    console.log(usuario);
-    this.router.navigate(['/usuarios'])
+    this.usuarioService.editar(this.modelo.id, usuario)
+    .subscribe(() => {
+        this.router.navigate(['/usuarios']);
+      },
+      (error) => console.log('no se pudo guardar los cambios') 
+    )
   }
 }

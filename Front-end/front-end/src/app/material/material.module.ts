@@ -9,7 +9,8 @@ import {MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTableModule} from '@angular/material/table'
+import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -24,7 +25,8 @@ import {MatTableModule} from '@angular/material/table'
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   imports: [
     CommonModule

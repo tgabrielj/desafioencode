@@ -14,6 +14,10 @@ export class UsuariosService {
 
   private apiURL = environment.apiURL + 'usuarios';
 
+  public obtenerPorId(id: number):Observable<usuarioDTO>{
+    return this.http.get<usuarioDTO>(`${this.apiURL}/${id}`);
+
+  }
   public obtenerTodos(): Observable<usuarioDTO[]>{
     return this.http.get<usuarioDTO[]>(this.apiURL)
   }
@@ -21,5 +25,9 @@ export class UsuariosService {
   public crear(usuario: usuarioCreacionDTO){
     console.log("envio usuario desde service", usuario)
     return this.http.post(this.apiURL, usuario);
+  }
+
+  public editar(id:number, usuario: usuarioCreacionDTO){
+    return this.http.put(`${this.apiURL}/${id}`, usuario);
   }
 }
