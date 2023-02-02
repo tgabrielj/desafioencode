@@ -33,6 +33,7 @@ namespace Back_end.Controllers
 
             var actividad = mapper.Map<Actividad>(actividadCreacionDTO);
             context.Add(actividad);
+            actividad.create_date = DateTime.Now;
             await context.SaveChangesAsync();
             return NoContent();
         }

@@ -7,7 +7,7 @@ namespace Back_end.DTOs
 {
     public class ActividadCreacionDTO
     {
-        public DateTime date_create { get; set; }
+        public DateTime create_date { get; set; }
         public int id_usuario { get; set; }
         public string actividad { get; set; }
     }
