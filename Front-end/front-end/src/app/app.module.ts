@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioUsuarioComponent } from './usuarios/formulario-usuario/formulario-usuario.component';
 import { ContactarPipe } from './pipes/contactar.pipe';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ConsultarUsuarioComponent } from './usuarios/consultar-usuario/consultar-usuario.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     MenuComponent,
     EditarUsuarioComponent,
     FormularioUsuarioComponent,
-    ContactarPipe
+    ContactarPipe,
+    ConsultarUsuarioComponent
   ],
   imports: [
     BrowserModule,

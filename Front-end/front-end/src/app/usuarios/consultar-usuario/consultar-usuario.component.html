@@ -1,8 +1,8 @@
-<h2>Editar usuario</h2>
+<h2>Consultar usuario</h2>
 
 <app-formulario-usuario  *ngIf="modelo"
 [modelo] = 'modelo'
 [consulta] = 'consulta'
-(onSubmit)="guardarCambios($event)"></app-formulario-usuario>
+></app-formulario-usuario>
 
 <mat-spinner *ngIf = "!modelo" ></mat-spinner>

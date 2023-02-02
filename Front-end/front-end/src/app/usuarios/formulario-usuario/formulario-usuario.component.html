@@ -1,5 +1,5 @@
 <form (submit)="guardarCambios()" [formGroup] = "form">
-    <mat-form-field appearance = "outline">
+    <mat-form-field appearance = "outline" >
         <mat-label>Nombre*</mat-label>
         <input formControlName = "nombre" matInput />
         <mat-error *ngIf="form.invalid">Ingrese un nombre valido</mat-error>
@@ -20,7 +20,7 @@
     <mat-form-field appearance = "outline">
         <mat-label>Fecha de Nacimiento*</mat-label>
         <input formControlName = "fecha_nacimiento" matInput [matDatepicker]="picker" />
-        <mat-hint>YYYY/MM/DD</mat-hint>
+        
         <mat-error *ngIf="form.invalid">Ingrese una fecha valida</mat-error>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -46,8 +46,8 @@
         </mat-select>
     </mat-form-field>
 
-    <div>
-        <button mat-flat-button color = "primary" [disabled]="form.invalid">
+    <div >
+        <button [consulta] = "consulta" *ngIf="consulta == false" mat-flat-button color = "primary" [disabled]="form.invalid">
             Guardar Cambios
         </button>
         <a mat-stroked-button routerLink="/usuarios">

@@ -12,6 +12,13 @@ export class CrearUsuarioComponent{
 
   constructor(private router: Router, private usuariosService: UsuariosService){
   }
+  consulta : boolean;
+
+  ngOnInit(): void {
+    this.consulta = false;
+    
+  }
+
 // se recibie del formulario-usuario el usuario que se intenta crear
   guardarCambios(usuario: usuarioCreacionDTO){
     //guardar los cambios

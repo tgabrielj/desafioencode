@@ -16,14 +16,19 @@ export class FormularioUsuarioComponent {
   }
 
   form: FormGroup;
+  esConsulta = false;
 
   @Input()
   modelo: usuarioCreacionDTO;
+
+  @Input()
+  consulta: boolean;
 
   @Output()
   onSubmit : EventEmitter<usuarioCreacionDTO> = new EventEmitter<usuarioCreacionDTO>();
 
   ngOnInit():void{
+    
     this.form = this.formBuilder.group({
       nombre: ['', {
         validators:[Validators.required, Validators.minLength(3), Validators.pattern("^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$")]
@@ -55,6 +60,13 @@ export class FormularioUsuarioComponent {
       // machera los atributos del formulario con el modelo usuario
       this.form.patchValue(this.modelo)
     }
+
+    console.log("es consulta", this.consulta);
+
+    if (this.consulta == true){
+      this.form.disable();
+    }
+
     
   }
 
@@ -63,6 +75,8 @@ export class FormularioUsuarioComponent {
     this.onSubmit.emit(this.form.value)
   
   }
+
+
 
   
   

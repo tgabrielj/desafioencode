@@ -25,6 +25,7 @@ export class ListadoUsuariosComponent implements OnInit{
   paginaActual = 1;
   cantidadRegistrosAMostrar = 10;
  
+  esConsulta = false;
 
   ngOnInit(): void {
     this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
@@ -57,6 +58,11 @@ export class ListadoUsuariosComponent implements OnInit{
     this.cantidadRegistrosAMostrar = datos.pageSize;
     this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
 
+  }
+
+  consultar(){
+    this.esConsulta = true;
+    
   }
 
     

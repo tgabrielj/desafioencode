@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ListadoActividadesComponent } from "./actividades/listado-actividades/listado-actividades.component";
+import { ConsultarUsuarioComponent } from "./usuarios/consultar-usuario/consultar-usuario.component";
 import { CrearUsuarioComponent } from "./usuarios/crear-usuario/crear-usuario.component";
 import { EditarUsuarioComponent } from "./usuarios/editar-usuario/editar-usuario.component";
 import { ListadoUsuariosComponent } from "./usuarios/listado-usuarios/listado-usuarios.component";
@@ -11,6 +12,8 @@ const routes: Routes = [
   {path: 'actividades', component: ListadoActividadesComponent},
   {path: 'usuarios/crear', component: CrearUsuarioComponent},
   {path: 'usuarios/editar/:id', component: EditarUsuarioComponent},
+  {path: 'usuarios/consultar/:id', component: ConsultarUsuarioComponent},
+
   {path: '**', redirectTo:''}
 ];
 

@@ -5,26 +5,27 @@ import {Router} from '@angular/router';
 import { UsuariosService } from '../usuarios.service';
 
 @Component({
-  selector: 'app-editar-usuario',
-  templateUrl: './editar-usuario.component.html',
-  styleUrls: ['./editar-usuario.component.css']
+  selector: 'app-consultar-usuario',
+  templateUrl: './consultar-usuario.component.html',
+  styleUrls: ['./consultar-usuario.component.css']
 })
-export class EditarUsuarioComponent implements OnInit{
+export class ConsultarUsuarioComponent implements OnInit{
+  
   constructor(private router: Router,
-              private usuarioService: UsuariosService,
-              private activatedRoute: ActivatedRoute){
+    private usuarioService: UsuariosService,
+    private activatedRoute: ActivatedRoute){
 
   }
 
   consulta : boolean;
 
-  modelo : usuarioDTO;
+  modelo : usuarioDTO;;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.usuarioService.obtenerPorId(params.id)
       .subscribe(usuario => {
-        this.consulta = false;
+        this.consulta = true;
         this.modelo= usuario;// en caso de no encontrar al usuario con ese id redirige al listado de usuarios
       },() => this.router.navigate(['/usuarios']))
     })
@@ -40,4 +41,8 @@ export class EditarUsuarioComponent implements OnInit{
       (error) => console.log('no se pudo guardar los cambios') 
     )
   }
+
+
+
+
 }
