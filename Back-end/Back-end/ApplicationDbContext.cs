@@ -16,5 +16,8 @@ namespace Back_end
         }
 
         public DbSet< Usuario> Usuarios { get; set; }
+
+
+        public DbSet<Actividad> Actividades { get; set; }
     }
 }

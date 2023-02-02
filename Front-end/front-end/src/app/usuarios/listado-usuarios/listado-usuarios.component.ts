@@ -50,7 +50,7 @@ export class ListadoUsuariosComponent implements OnInit{
       this.usuarios = respuesta.body;
       console.log(respuesta.headers.get("cantidadTotalRegistros"));
       this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
-    }, error => console.error(error))
+    }, error => console.log(error))
   }
 
   actualizarPaginacion(datos: PageEvent){
@@ -59,14 +59,6 @@ export class ListadoUsuariosComponent implements OnInit{
     this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
 
   }
-
-  consultar(){
-    this.esConsulta = true;
-    
-  }
-
-    
-
 
 }
 

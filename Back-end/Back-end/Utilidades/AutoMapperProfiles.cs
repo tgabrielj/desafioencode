@@ -14,6 +14,8 @@ namespace Back_end.Utilidades
 
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<UsuarioCreacionDTO, Usuario>();
+            CreateMap<Actividad, ActividadDTO>().ReverseMap();
+            CreateMap<ActividadCreacionDTO, Actividad>();
         }
     }
 }
