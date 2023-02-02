@@ -13,29 +13,33 @@ export class ListadoActividadesComponent {
 
   }
 
-  actividades : actividadDTO[] = [];
+  actividades : actividadDTO[]=[];
 
   columnasAMostrar = ['Id Actividad','Fecha de Creacion', 'Id Usuario', 'Actividad'];
   
   ngOnInit(): void {
 
-    this.actividades = [{
+    //this.actividades = [{
 
-    id: 1,
-    create_date: new Date(),
-    id_usuario: 1,
-    actividad: 'consulta de usuario',
+    //id: 1,
+    //create_date: new Date(),
+    //id_usuario: 1,
+    //actividad: 'consulta de usuario',
 
 
-    },
-    {
-    id: 2,
-    create_date: new Date(),
-    id_usuario: 4,
-    actividad: 'actualizacion de usuario',
-  }
-  ]
+    //},
+    //{
+    //id: 2,
+    //create_date: new Date(),
+    //id_usuario: 4,
+    //actividad: 'actualizacion de usuario',
+  //}
 
+  this.actividadesService.obtenerTodos()
+    .subscribe(actividades_ => {
+      this.actividades = actividades_;
+      console.log(actividades_);
+    }, error => console.error(error))
   }
 }
 
