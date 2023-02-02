@@ -10,3 +10,10 @@ export interface actividadDTO{
     id_usuario: number;
     actividad: string;
 }
+
+export interface actividadUsuarioDTO{
+    fecha_de_actividad: Date;
+    nombre: string;
+    apellido: string;
+    actividad: string;
+}

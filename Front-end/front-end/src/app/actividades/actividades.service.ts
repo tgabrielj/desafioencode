@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { actividadCreacionDTO, actividadDTO } from './actividad';
+import { actividadCreacionDTO, actividadDTO, actividadUsuarioDTO } from './actividad';
 
 
 @Injectable({
@@ -14,8 +14,8 @@ export class ActividadesService {
 
   private apiURL = environment.apiURL + 'actividades';
 
-  public obtenerTodos(): Observable<actividadDTO[]>{
-    return this.http.get<actividadDTO[]>(this.apiURL)
+  public obtenerTodos(): Observable<actividadUsuarioDTO[]>{
+    return this.http.get<actividadUsuarioDTO[]>(this.apiURL)
   }
 
   public crearActividad(actividad: actividadCreacionDTO){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { actividadDTO, actividadCreacionDTO } from '../actividad';
+import { actividadDTO, actividadCreacionDTO,actividadUsuarioDTO } from '../actividad';
 import { ActividadesService } from '../actividades.service';
 
 @Component({
@@ -13,9 +13,9 @@ export class ListadoActividadesComponent {
 
   }
 
-  actividades : actividadDTO[]=[];
+  actividades : actividadUsuarioDTO[]=[];
 
-  columnasAMostrar = ['Id Actividad','Fecha de Creacion', 'Id Usuario', 'Actividad'];
+  columnasAMostrar = ['Fecha de Actividad','Nombre Completo', 'Detalle de Actividad'];
   
   ngOnInit(): void {
 

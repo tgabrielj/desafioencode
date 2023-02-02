@@ -1,4 +1,5 @@
 using AutoMapper;
+using Back_end.Data;
 using Back_end.DTOs;
 using Back_end.Entidades;
 using Back_end.Utilidades;
@@ -16,16 +17,19 @@ namespace Back_end.Controllers
     [ApiController]
     public class ActividadesController : ControllerBase
     {
+        private readonly ValuesRepository _repository;
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
 
         public ActividadesController(
+            ValuesRepository repository,
             ApplicationDbContext context,
             IMapper mapper)
         {
             //this.repositorio = repositorio;
             this.context = context;
             this.mapper = mapper;
+            this._repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         [HttpPost]
@@ -39,14 +43,16 @@ namespace Back_end.Controllers
         }
 
         [HttpGet] //api/actividades
-        public async Task<ActionResult<List<ActividadDTO>>> Get([FromQuery] PaginacionDTO paginacionDTO)
+        public async Task<List<ActividadUsuarioDTO>> Get()
         {
 
-            var queryable = context.Actividades.AsQueryable();
-            await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
-            var actividades = await queryable.OrderBy(x => x.create_date).Paginar(paginacionDTO).ToListAsync();
+            //var queryable = context.Actividades.AsQueryable();
+            //await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
+            //var actividades = await queryable.OrderBy(x => x.create_date).Paginar(paginacionDTO).ToListAsync();
 
-            return mapper.Map<List<ActividadDTO>>(actividades);
+            //return mapper.Map<List<ActividadDTO>>(actividades);
+
+            return await _repository.GetAll();
         }
 
         
