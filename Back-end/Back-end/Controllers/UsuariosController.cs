@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Back_end.DTOs;
 using Back_end.Entidades;
+using Back_end.Utilidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -27,9 +28,12 @@ namespace Back_end.Controllers
         }
 
         [HttpGet] //api/usuarios
-        public async Task<ActionResult<List<UsuarioDTO>>> Get() {
+        public async Task<ActionResult<List<UsuarioDTO>>> Get([FromQuery] PaginacionDTO paginacionDTO) {
 
-            var usuarios =  await context.Usuarios.ToListAsync();
+            var queryable =  context.Usuarios.AsQueryable();
+            await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
+            var usuarios = await queryable.OrderBy(x => x.nombre).Paginar(paginacionDTO).ToListAsync();
+
             return mapper.Map<List<UsuarioDTO>>(usuarios);
         }
 
@@ -73,10 +77,18 @@ namespace Back_end.Controllers
         }
 
 
-        [HttpDelete]
-        public ActionResult Delete()
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            var existe = await context.Usuarios.AnyAsync(x => x.id == id);
+
+            if (!existe) {
+                return NotFound();
+            }
+
+            context.Remove(new Usuario() { id = id });
+            await context.SaveChangesAsync();
+            return NoContent();
         }
 
     }

@@ -6199,24 +6199,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gjuncos\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gjuncos\\Desktop\\Desafio\\Back-end\\Back-end\\Back-end.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\repoDesafio\\desafioencode\\Back-end\\Back-end\\Back-end.csproj",
       "projectName": "Back-end",
-      "projectPath": "C:\\Users\\gjuncos\\Desktop\\Desafio\\Back-end\\Back-end\\Back-end.csproj",
-      "packagesPath": "C:\\Users\\gjuncos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gjuncos\\Desktop\\Desafio\\Back-end\\Back-end\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\repoDesafio\\desafioencode\\Back-end\\Back-end\\Back-end.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\repoDesafio\\desafioencode\\Back-end\\Back-end\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gjuncos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6279,7 +6274,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

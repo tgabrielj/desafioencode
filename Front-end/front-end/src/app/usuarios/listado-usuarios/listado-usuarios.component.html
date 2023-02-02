@@ -66,11 +66,18 @@
                 <mat-icon>person_search</mat-icon>
             </button>
 
-            <button mat-raised-button color="accent">
+            <button mat-raised-button color="accent"
+                routerLink = "/usuarios/editar/{{element.id}}">
                 <mat-icon>edit</mat-icon>
+                
             </button>
 
-            <button mat-raised-button color="warn">
+            <button mat-raised-button color="warn"
+            [swal]="{title: 'Confirmación',
+             text: '¿Está seguro que desea borrar el registro?',
+             showCancelButton: true}"
+             (confirm)="borrar(element.id)"
+            >
                 <mat-icon>delete</mat-icon>
             </button>
 
@@ -81,3 +88,10 @@
     <tr mat-row *matRowDef=" let row; columns: columnasAMostrar"></tr>
 
 </table>
+
+<mat-paginator [pageSizeOptions] = "[5,10,20,50]" showFirstLastButtons
+[length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
+(page)="actualizarPaginacion($event)"
+>
+
+</mat-paginator>

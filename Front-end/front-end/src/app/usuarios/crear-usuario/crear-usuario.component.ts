@@ -16,7 +16,7 @@ export class CrearUsuarioComponent{
   guardarCambios(usuario: usuarioCreacionDTO){
     //guardar los cambios
     this.usuariosService.crear(usuario).subscribe(()=>{
-      
+    console.log(usuario) 
     this.router.navigate(['/usuarios']);
     }, error => console.error(error));
   }

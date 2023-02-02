@@ -11,6 +11,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -26,7 +27,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatDatepickerModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   imports: [
     CommonModule

@@ -33,11 +33,14 @@ namespace Back_end
             options.UseSqlServer(Configuration.GetConnectionString("dafaultConnection")));
 
             services.AddCors(options => {
+
+                var frontendURL = Configuration.GetValue<string>("frontend_url");
                 options.AddDefaultPolicy(builder =>
                 {
-                    var frontendURL = Configuration.GetValue<string>("frontend_url");
                     // sin la s de https
-                    builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader()
+                    .WithExposedHeaders(new string[] { "cantidadTotalRegistros" });
+
                 });
             
             });
