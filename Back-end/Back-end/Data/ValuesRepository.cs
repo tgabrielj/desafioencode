@@ -60,11 +60,26 @@ namespace Back_end.Data
     };
         }  
 
-        // crear actividad
+        // crear actividad cuando es creacion de usuario
 
-        public Task Insert(ActividadCreacionDTO actividad)
+        public async Task Insert(ActividadCreacionDTO actividad)
         {
-            throw new NotImplementedException();
+            using (SqlConnection sql = new SqlConnection(_connectionString)) {
+                using (SqlCommand cmd = new SqlCommand("pr_actividad_insertar", sql)) {
+
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id_usuario", actividad.id_usuario));
+                    cmd.Parameters.Add(new SqlParameter("@actividad", actividad.actividad));
+                    await sql.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();
+
+                }
+            }
         }
+
+   
+
+
+
     }
 }

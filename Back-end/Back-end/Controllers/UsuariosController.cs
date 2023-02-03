@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Back_end.Data;
 using Back_end.DTOs;
 using Back_end.Entidades;
 using Back_end.Utilidades;
@@ -16,15 +17,19 @@ namespace Back_end.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
+        private readonly ValuesRepository _repository;
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
+        private ActividadCreacionDTO actividad;
 
         public UsuariosController(
+            ValuesRepository repository,
             ApplicationDbContext context,
             IMapper mapper) {
-            //this.repositorio = repositorio;
+            this.actividad = new ActividadCreacionDTO();
             this.context = context;
             this.mapper = mapper;
+            this._repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         [HttpGet] //api/usuarios
@@ -42,18 +47,23 @@ namespace Back_end.Controllers
         public async Task<ActionResult<UsuarioDTO>> Get(int id) {
             // el BinRequired obliga a que los parametros sean obligatorios
 
+            this.actividad.create_date = DateTime.Now;
+            this.actividad.id_usuario = id;
+            this.actividad.actividad = "consulta de usuario";
+
             var usuario = await context.Usuarios.FirstOrDefaultAsync(x => x.id ==id);
             if (usuario == null) {
                 return NotFound();
             }
+
+            await _repository.Insert(actividad);
 
             return mapper.Map<UsuarioDTO>(usuario);
         }
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UsuarioCreacionDTO usuarioCreacionDTO) {
-
-            //throw new NotImplementedException();
+            
             var usuario = mapper.Map<Usuario>(usuarioCreacionDTO);
             context.Add(usuario);
             await context.SaveChangesAsync();
@@ -63,6 +73,10 @@ namespace Back_end.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put( int id, [FromBody] UsuarioCreacionDTO usuarioCreacionDTO)
         {
+            this.actividad.create_date = DateTime.Now;
+            this.actividad.id_usuario = id;
+            this.actividad.actividad = "actualizacion de usuario";
+
             var usuario = await context.Usuarios.FirstOrDefaultAsync(x => x.id == id);
             if (usuario == null)
             {
@@ -71,6 +85,8 @@ namespace Back_end.Controllers
 
             usuario = mapper.Map(usuarioCreacionDTO, usuario);
             await context.SaveChangesAsync();
+            await _repository.Insert(actividad);
+
             return NoContent();
 
 
