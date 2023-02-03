@@ -15,6 +15,7 @@ export class FormularioUsuarioComponent {
   constructor(private router: Router, private formBuilder:FormBuilder){
   }
 
+  paises : string[];
   form: FormGroup;
   esConsulta = false;
 
@@ -28,6 +29,8 @@ export class FormularioUsuarioComponent {
   onSubmit : EventEmitter<usuarioCreacionDTO> = new EventEmitter<usuarioCreacionDTO>();
 
   ngOnInit():void{
+
+    this.paises = ['ARG', 'BRA','URY'];
     
     this.form = this.formBuilder.group({
       nombre: ['', {

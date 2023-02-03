@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListadoUsuariosComponent } from './usuarios/listado-usuarios/listado-usuarios.component';
 import { ListadoActividadesComponent } from './actividades/listado-actividades/listado-actividades.component';
-import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
@@ -25,7 +24,6 @@ import { ConsultarUsuarioComponent } from './usuarios/consultar-usuario/consulta
     ListadoUsuariosComponent,
     CrearUsuarioComponent,
     ListadoActividadesComponent,
-    ListadoGenericoComponent,
     MenuComponent,
     EditarUsuarioComponent,
     FormularioUsuarioComponent,

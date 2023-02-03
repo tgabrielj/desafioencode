@@ -34,8 +34,10 @@
 
     <mat-form-field appearance = "outline">
         <mat-label>Pais*</mat-label>
-        <input formControlName = "pais" matInput />
-        <mat-error *ngIf="form.invalid">Ingrese un pais valido</mat-error>
+        <mat-select formControlName = "pais">
+            <mat-option *ngFor="let p of paises" [value]="p">{{p}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.invalid">Seleccione una opcion</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance = "outline">
@@ -44,6 +46,7 @@
             <mat-option [value]=false>NO</mat-option>
             <mat-option [value]=true>SI</mat-option>
         </mat-select>
+        <mat-error *ngIf="form.invalid">Seleccione una opcion</mat-error>
     </mat-form-field>
 
     <div >

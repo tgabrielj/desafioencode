@@ -20,7 +20,11 @@ export class CrearUsuarioComponent{
 
   actividad_ : actividadCreacionDTO;
 
+ 
+
   ngOnInit(): void {
+
+
     this.consulta = false;
 
     this.actividad_ = {
