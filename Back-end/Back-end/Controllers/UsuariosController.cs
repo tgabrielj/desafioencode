@@ -33,13 +33,15 @@ namespace Back_end.Controllers
         }
 
         [HttpGet] //api/usuarios
-        public async Task<ActionResult<List<UsuarioDTO>>> Get([FromQuery] PaginacionDTO paginacionDTO) {
 
-            var queryable =  context.Usuarios.AsQueryable();
-            await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
-            var usuarios = await queryable.OrderBy(x => x.nombre).Paginar(paginacionDTO).ToListAsync();
+        public async Task<List<UsuarioDTO>> Get_usuarios() {
 
-            return mapper.Map<List<UsuarioDTO>>(usuarios);
+            //var queryable =  context.Usuarios.AsQueryable();
+            //await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
+            //var usuarios = await queryable.OrderBy(x => x.nombre).Paginar(paginacionDTO).ToListAsync();
+
+            //return mapper.Map<List<UsuarioDTO>>(usuarios);
+            return await _repository.Get_usuarios();
         }
 
         // un endpoint para obtener usuario por id
@@ -62,12 +64,14 @@ namespace Back_end.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] UsuarioCreacionDTO usuarioCreacionDTO) {
-            
-            var usuario = mapper.Map<Usuario>(usuarioCreacionDTO);
-            context.Add(usuario);
-            await context.SaveChangesAsync();
-            return NoContent();
+        public async Task Post([FromBody] UsuarioCreacionDTO usuarioCreacionDTO) {
+
+        
+            //var usuario = mapper.Map<Usuario>(usuarioCreacionDTO);
+            //context.Add(usuario);
+            //await context.SaveChangesAsync();
+            //return NoContent();
+            await _repository.Insert_usuario(usuarioCreacionDTO);
         }
 
         [HttpPut("{id:int}")]
@@ -102,8 +106,19 @@ namespace Back_end.Controllers
                 return NotFound();
             }
 
-            context.Remove(new Usuario() { id = id });
-            await context.SaveChangesAsync();
+            this.actividad.create_date = DateTime.Now;
+            this.actividad.id_usuario = id;
+            this.actividad.actividad = "eliminacion de usuario";
+
+
+
+            //context.Remove(new Usuario() { id = id });
+            //await context.SaveChangesAsync();
+
+            // se llama al proceso almacenado para actualizar el estado del usuario a 0 dado de baja
+            await _repository.Dar_de_baja_usuario(id, false);
+            await _repository.Insert(actividad);
+
             return NoContent();
         }
 
